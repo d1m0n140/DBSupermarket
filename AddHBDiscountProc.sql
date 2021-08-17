@@ -1,0 +1,10 @@
+CREATE PROCEDURE AddHBDiscountProc
+AS
+BEGIN
+	
+	(SELECT DISTINCT DiscID, Discount.CustomID FROM Discount
+	INNER JOIN Customers ON Discount.CustomID = Customers.CustomID
+	WHERE DATEPART(MONTH, Birthday) = DATEPART(MONTH, GETDATE()) AND
+	DATEPART(DAY, Birthday) = DATEPART(DAY, GETDATE()))
+
+END
